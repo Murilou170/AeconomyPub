@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1006627968507",
+    "project_id": "aeconomy-ae805",
+    "storage_bucket": "aeconomy-ae805.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006627968507:android:eaea2b0dd9c42574e5a75e",
+        "android_client_info": {
+          "package_name": "com.example.aeconomy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1006627968507-a07o138j4ve9ft5q1bkp0iblk3okpg7f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHkp29slOrMuiPIJhBYEjRE7cJP-AoFpM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1006627968507-a07o138j4ve9ft5q1bkp0iblk3okpg7f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
