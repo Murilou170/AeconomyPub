@@ -84,7 +84,7 @@ class _LoginState extends State<Login> {
                     "images/sublogo_aeconomy.jpeg",
                     //dimensionar app
                     width: 250,
-                    height: 300,
+                    height: 200,
                   ),
                 ),
                 Padding(
