@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'Cadastro.dart';
 import 'Home.dart';
-import 'model/Usuario.dart';
+
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class _LoginState extends State<Login> {
   _validarCampos() {
 
 
-    String email = _controllerEmail.text;
+    String email = _controllerEmail.text.trim();
     String senha = _controllerSenha.text;
 
     if (email.isNotEmpty && email.contains("@")) {
@@ -66,6 +66,20 @@ class _LoginState extends State<Login> {
             "Erro ao autenticar usuário, verifique o e-mail e senha e tente novamente!";
       });
     });
+  }
+
+  Future _verificarUsuarioLogado() async{
+    var currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser != null){
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => Home()));
+
+    }
+  }
+  @override
+  void initState() {
+    _verificarUsuarioLogado();
+    super.initState();
   }
 
   @override
