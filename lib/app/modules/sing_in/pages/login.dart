@@ -1,8 +1,9 @@
-import 'package:aeconomy/model/Usuario.dart';
+import 'package:aeconomy/app/modules/home/pages/home.dart';
+import 'package:aeconomy/app/modules/register/pages/cadastro.dart';
+import 'package:aeconomy/app/modules/sing_in/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'Cadastro.dart';
-import 'Home.dart';
+
 
 
 class Login extends StatefulWidget {

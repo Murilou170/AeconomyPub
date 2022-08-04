@@ -1,9 +1,9 @@
+import 'package:aeconomy/app/modules/home/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'Home.dart';
-import 'package:aeconomy/model/Usuario.dart';
+import 'package:aeconomy/app/modules/sing_in/usuario.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
@@ -47,29 +47,29 @@ class _CadastroState extends State<Cadastro> {
               usuario.email = email;
               usuario.senha = senha;
               _cadastrarUsuario(usuario);
-
-
-            }else{
+            } else {
               setState(() {
-                _mensagemErro = "Preencha a senha corretamente com mais de 6 caracteres";
+                _mensagemErro =
+                    "Preencha a senha corretamente com mais de 6 caracteres";
               });
             }
-          }else{
+          } else {
             setState(() {
               _mensagemErro = "Preencha o E-mail corretamente utilizando @";
             });
           }
-        }else{
+        } else {
           setState(() {
-            _mensagemErro = "Preencha o campo de CEP com um valor válido ex: 55641-715";
+            _mensagemErro =
+                "Preencha o campo de CEP com um valor válido ex: 55641-715";
           });
         }
-      }else{
+      } else {
         setState(() {
           _mensagemErro = "Preencha seu sobrenome";
         });
       }
-    }else{
+    } else {
       setState(() {
         _mensagemErro = "Preencha seu nome";
       });
@@ -92,13 +92,15 @@ class _CadastroState extends State<Cadastro> {
           .collection("Usuários")
           .doc(firebaseUser.user!.uid) //dúvida no "!"
           .set(usuario.toMap());
-      
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
-    }).catchError((error){
+
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => Home()));
+    }).catchError((error) {
       setState(() {
-        _mensagemErro = "Erro ao cadastrar usuário, verifique os campos e tente novamente";
+        _mensagemErro =
+            "Erro ao cadastrar usuário, verifique os campos e tente novamente";
       });
-         });
+    });
   }
 
   @override
@@ -117,7 +119,7 @@ class _CadastroState extends State<Cadastro> {
             Padding(
               padding: EdgeInsets.only(top: 32, left: 5, right: 5),
               child: TextField(
-                controller: _controllerNome,
+                  controller: _controllerNome,
                   autofocus: true,
                   keyboardType: TextInputType.text,
                   style: TextStyle(fontSize: 20),

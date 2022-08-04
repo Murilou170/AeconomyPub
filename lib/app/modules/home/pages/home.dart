@@ -1,8 +1,9 @@
-import 'package:aeconomy/telas/Perfil.dart';
+import 'package:aeconomy/app/modules/home/pages/inicio.dart';
+import 'package:aeconomy/app/modules/profile/pages/perfil.dart';
+import 'package:aeconomy/app/modules/search/pages/busca.dart';
 import 'package:flutter/material.dart';
-import 'package:aeconomy/telas/Início.dart';
-import 'package:aeconomy/telas/Proximidades.dart';
-import 'package:aeconomy/telas/Busca.dart';
+import 'package:aeconomy/app/modules/near/pages/proximidades.dart';
+
 
 
 class Home extends StatefulWidget {
