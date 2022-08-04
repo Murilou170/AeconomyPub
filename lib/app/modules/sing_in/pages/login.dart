@@ -1,5 +1,5 @@
 import 'package:aeconomy/app/modules/home/pages/home.dart';
-import 'package:aeconomy/app/modules/register/pages/cadastro.dart';
+import 'package:aeconomy/app/modules/register/pages/register_page.dart';
 import 'package:aeconomy/app/modules/sing_in/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -161,7 +161,7 @@ class _LoginState extends State<Login> {
                     ),
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Cadastro()));
+                          MaterialPageRoute(builder: (context) => RegisterPage()));
                     },
                   ),
                 ),
