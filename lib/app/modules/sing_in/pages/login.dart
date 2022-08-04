@@ -4,8 +4,6 @@ import 'package:aeconomy/app/modules/sing_in/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
-
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -20,8 +18,6 @@ class _LoginState extends State<Login> {
   String _mensagemErro = "";
 
   _validarCampos() {
-
-
     String email = _controllerEmail.text.trim();
     String senha = _controllerSenha.text;
 
@@ -58,8 +54,7 @@ class _LoginState extends State<Login> {
         .signInWithEmailAndPassword(
             email: usuario.email, password: usuario.senha)
         .then((currentUser) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Home()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
     }).catchError((error) {
       print("erro app: " + error.toString());
       setState(() {
@@ -69,14 +64,14 @@ class _LoginState extends State<Login> {
     });
   }
 
-  Future _verificarUsuarioLogado() async{
+  Future _verificarUsuarioLogado() async {
     var currentUser = FirebaseAuth.instance.currentUser;
-      if (currentUser != null){
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Home()));
-
+    if (currentUser != null) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => Home()));
     }
   }
+
   @override
   void initState() {
     _verificarUsuarioLogado();
@@ -96,11 +91,11 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: EdgeInsets.only(bottom: 32),
                   child: Image.asset(
-                    "images/sublogo_aeconomy.jpeg",
-                    //dimensionar app
+                    'assets/images/logos/sublogo_aeconomy.jpeg',
                     width: 250,
                     height: 200,
                   ),
+                  
                 ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(10, 0, 10, 10),

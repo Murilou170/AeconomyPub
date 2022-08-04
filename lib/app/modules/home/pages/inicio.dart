@@ -21,7 +21,7 @@ class _InicioState extends State<Inicio> {
                 Padding(
                   padding: EdgeInsets.only(bottom: 32),
                   child: Image.asset(
-                    "images/sublogo_aeconomy.jpeg",
+                    'assets/images/logos/sublogo_aeconomy.jpeg',
                     width: 300,
                     height: 300,
                   ),
