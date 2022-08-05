@@ -15,71 +15,62 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(colors: 
-            [
-              Color.fromRGBO(215,117,255,0.5),
-            Color.fromRGBO(255,188,117,0.9)
-            ]
-            )
-          ),
+          color: Colors.white,
+          // decoration: BoxDecoration(
+          //     gradient: LinearGradient(colors: [
+          //   Color.fromRGBO(255, 50, 0, 0.5),
+          //   Color.fromRGBO(255, 188, 117, 0.5)
+          // ])),
           height: 1000,
-          
           child: Column(
             children: [
               Container(
                 margin: EdgeInsets.symmetric(vertical: 100, horizontal: 20),
-                child: Container(
-                  decoration: new BoxDecoration(
-                      color: Colors.grey[850],
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(40),
-                      )),
-                  height: 800,
-                  width: MediaQuery.of(context).size.width,
-                  child: Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: 45,
-                          ),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Colors.black,
+                          size: 45,
                         ),
                       ),
-                      Container(
-                        child: Column(
-                          children: [
-                            Text(
-                              'Sign Up',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 40,
-                              ),
+                    ),
+                    Container(
+                      child: Column(
+                        children: [
+                          Text(
+                            'Sign Up',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 40,
                             ),
-                            SizedBox(height: 25),
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 50),
+                          ),
+                          SizedBox(height: 25),
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: 50),
+                            child: Center(
                               child: Text(
                                 'Registre-se para ficar por dentro das melhores ofertas',
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontSize: 18,
                                 ),
                               ),
                             ),
-                            SizedBox(height: 50),
-                            RegisterForms(),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                          ),
+                          SizedBox(height: 50),
+                          RegisterForms(),
+                        ],
+                      ),
+                    )
+                  ],
                 ),
               )
             ],

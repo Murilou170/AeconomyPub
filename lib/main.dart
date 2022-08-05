@@ -13,7 +13,7 @@ void main() async {
     home: Login(),
     theme: ThemeData(
       primaryColor: Color(0xffFF1717),
-      accentColor: Colors.black12,
+      
 
     ),
     debugShowCheckedModeBanner: false,

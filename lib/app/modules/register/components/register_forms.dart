@@ -14,7 +14,6 @@ class RegisterForms extends StatefulWidget {
 
 class _RegisterFormsState extends State<RegisterForms> {
   TextEditingController _controllerNome = TextEditingController();
-  // TextEditingController _controllerSobrenome = TextEditingController();
   TextEditingController _controllercep = TextEditingController();
   TextEditingController _controllerEmail = TextEditingController();
   TextEditingController _controllerSenha = TextEditingController();
@@ -106,11 +105,11 @@ class _RegisterFormsState extends State<RegisterForms> {
             style: TextStyle(fontSize: 20),
             decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-              hintText: "Primeiro Nome",
+              hintText: "Nome Completo",
               filled: true,
               fillColor: Colors.grey[100],
               border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
             ),
           ),
           SizedBox(height: 20),
@@ -125,7 +124,7 @@ class _RegisterFormsState extends State<RegisterForms> {
               filled: true,
               fillColor: Colors.grey[100],
               border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
             ),
           ),
           SizedBox(height: 20),
@@ -140,7 +139,7 @@ class _RegisterFormsState extends State<RegisterForms> {
               filled: true,
               fillColor: Colors.grey[100],
               border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
             ),
           ),
           SizedBox(height: 20),
@@ -155,35 +154,40 @@ class _RegisterFormsState extends State<RegisterForms> {
               filled: true,
               fillColor: Colors.grey[100],
               border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
             ),
             obscureText: true,
           ),
           SizedBox(height: 40),
           Center(
-            child: ElevatedButton(
-              child: Text(
-                "Cadastrar",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 32,
+            child: Container(
+              width: 350,
+              height: 40,
+              child: ElevatedButton(
+                child: Text(
+                  "Cadastrar",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+                onPressed: () {
+                  _validarCampos();
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xffFF1717),
+                  
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
               ),
-              onPressed: () {
-                _validarCampos();
-              },
-              style: ElevatedButton.styleFrom(
-                  primary: Color.fromARGB(250, 255, 99, 71),
-                  padding: EdgeInsets.fromLTRB(25, 10, 25, 10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(32),
-                  )),
             ),
           ),
           SizedBox(height: 20),
           Center(
             child: Text(
-              _mensagemErro,
+             "${_mensagemErro}",
               style: TextStyle(color: Colors.redAccent, fontSize: 25),
             ),
           )
