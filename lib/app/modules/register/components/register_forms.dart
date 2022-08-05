@@ -184,7 +184,7 @@ class _RegisterFormsState extends State<RegisterForms> {
           Center(
             child: Text(
               _mensagemErro,
-              style: TextStyle(color: Colors.redAccent, fontSize: 26),
+              style: TextStyle(color: Colors.redAccent, fontSize: 25),
             ),
           )
         ],
