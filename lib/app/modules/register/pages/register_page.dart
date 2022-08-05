@@ -15,8 +15,16 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: 
+            [
+              Color.fromRGBO(215,117,255,0.5),
+            Color.fromRGBO(255,188,117,0.9)
+            ]
+            )
+          ),
           height: 1000,
-          color: Color.fromARGB(250, 255, 99, 71),
+          
           child: Column(
             children: [
               Container(

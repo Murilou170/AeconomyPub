@@ -28,9 +28,9 @@ class _LoginState extends State<Login> {
         });
 
         String nome = "";
-        String sobrenome = "";
+        
         String cep = "";
-        Usuario usuario = Usuario(email, senha, nome, cep, sobrenome);
+        Usuario usuario = Usuario(email, senha, nome, cep);
         usuario.email = email;
         usuario.senha = senha;
 

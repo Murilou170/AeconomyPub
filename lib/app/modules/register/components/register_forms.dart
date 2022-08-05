@@ -14,7 +14,7 @@ class RegisterForms extends StatefulWidget {
 
 class _RegisterFormsState extends State<RegisterForms> {
   TextEditingController _controllerNome = TextEditingController();
-  TextEditingController _controllerSobrenome = TextEditingController();
+  // TextEditingController _controllerSobrenome = TextEditingController();
   TextEditingController _controllercep = TextEditingController();
   TextEditingController _controllerEmail = TextEditingController();
   TextEditingController _controllerSenha = TextEditingController();
@@ -22,47 +22,40 @@ class _RegisterFormsState extends State<RegisterForms> {
 
   _validarCampos() {
     String nome = _controllerNome.text;
-    String sobrenome = _controllerSobrenome.text;
     String cep = _controllercep.text;
     String email = _controllerEmail.text;
     String senha = _controllerSenha.text;
 
     if (nome.isNotEmpty) {
-      if (sobrenome.isNotEmpty) {
-        if (cep.isNotEmpty && cep.length == 9) {
-          if (email.isNotEmpty && email.contains("@")) {
-            if (senha.isNotEmpty && senha.length > 6) {
-              setState(() {
-                _mensagemErro = "";
-              });
+      if (cep.isNotEmpty && cep.length == 9) {
+        if (email.isNotEmpty && email.contains("@")) {
+          if (senha.isNotEmpty && senha.length > 6) {
+            setState(() {
+              _mensagemErro = "";
+            });
 
-              Usuario usuario = Usuario(nome, sobrenome, cep, email, senha);
-              usuario.nome = nome;
-              usuario.sobrenome = sobrenome;
-              usuario.cep = cep;
-              usuario.email = email;
-              usuario.senha = senha;
-              _cadastrarUsuario(usuario);
-            } else {
-              setState(() {
-                _mensagemErro =
-                    "Preencha a senha corretamente com mais de 6 caracteres";
-              });
-            }
+            Usuario usuario = Usuario(nome, cep, email, senha);
+            usuario.nome = nome;
+
+            usuario.cep = cep;
+            usuario.email = email;
+            usuario.senha = senha;
+            _cadastrarUsuario(usuario);
           } else {
             setState(() {
-              _mensagemErro = "Preencha o E-mail corretamente utilizando @";
+              _mensagemErro =
+                  "Preencha a senha corretamente com mais de 6 caracteres";
             });
           }
         } else {
           setState(() {
-            _mensagemErro =
-                "Preencha o campo de CEP com um valor válido ex: 55641-715";
+            _mensagemErro = "Preencha o E-mail corretamente utilizando @";
           });
         }
       } else {
         setState(() {
-          _mensagemErro = "Preencha seu sobrenome";
+          _mensagemErro =
+              "Preencha o campo de CEP com um valor válido ex: 55641-715";
         });
       }
     } else {
@@ -122,21 +115,6 @@ class _RegisterFormsState extends State<RegisterForms> {
           ),
           SizedBox(height: 20),
           TextField(
-            controller: _controllerSobrenome,
-            autofocus: true,
-            keyboardType: TextInputType.text,
-            style: TextStyle(fontSize: 20),
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-              hintText: "Segundo Nome",
-              filled: true,
-              fillColor: Colors.grey[100],
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-            ),
-          ),
-          SizedBox(height: 20),
-          TextField(
             controller: _controllercep,
             autofocus: true,
             keyboardType: TextInputType.streetAddress,
@@ -152,19 +130,20 @@ class _RegisterFormsState extends State<RegisterForms> {
           ),
           SizedBox(height: 20),
           TextField(
-              controller: _controllerEmail,
-              autofocus: true,
-              keyboardType: TextInputType.emailAddress,
-              style: TextStyle(fontSize: 20),
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                
-                hintText: "E-mail",
-                filled: true,
-                fillColor: Colors.grey[100],
-                border:  OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-              ),),
-              SizedBox(height: 20),
+            controller: _controllerEmail,
+            autofocus: true,
+            keyboardType: TextInputType.emailAddress,
+            style: TextStyle(fontSize: 20),
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+              hintText: "E-mail",
+              filled: true,
+              fillColor: Colors.grey[100],
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+            ),
+          ),
+          SizedBox(height: 20),
           TextField(
             controller: _controllerSenha,
             autofocus: true,
@@ -175,7 +154,8 @@ class _RegisterFormsState extends State<RegisterForms> {
               hintText: "Senha",
               filled: true,
               fillColor: Colors.grey[100],
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
             ),
             obscureText: true,
           ),
@@ -184,7 +164,10 @@ class _RegisterFormsState extends State<RegisterForms> {
             child: ElevatedButton(
               child: Text(
                 "Cadastrar",
-                style: TextStyle(color: Colors.white, fontSize: 32),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                ),
               ),
               onPressed: () {
                 _validarCampos();
