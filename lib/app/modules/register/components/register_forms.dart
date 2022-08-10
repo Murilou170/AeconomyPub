@@ -19,6 +19,15 @@ class _RegisterFormsState extends State<RegisterForms> {
   TextEditingController _controllerSenha = TextEditingController();
   String _mensagemErro = "";
 
+  // String? validadeCep(String? _controllercep) {
+  //   if (_controllercep?.length != 9) {
+  //     return 'Digite um Cep Válido';
+  //   } else {
+  //     return Scaffold.of(context).showSnackBar(snackbar);
+  //   }
+  //   return null;
+  // }
+
   _validarCampos() {
     String nome = _controllerNome.text;
     String cep = _controllercep.text;
@@ -35,7 +44,6 @@ class _RegisterFormsState extends State<RegisterForms> {
 
             Usuario usuario = Usuario(nome, cep, email, senha);
             usuario.nome = nome;
-
             usuario.cep = cep;
             usuario.email = email;
             usuario.senha = senha;
@@ -91,6 +99,8 @@ class _RegisterFormsState extends State<RegisterForms> {
     });
   }
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -98,24 +108,43 @@ class _RegisterFormsState extends State<RegisterForms> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextField(
-            controller: _controllerNome,
-            autofocus: true,
-            keyboardType: TextInputType.text,
-            style: TextStyle(fontSize: 20),
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-              hintText: "Nome Completo",
-              filled: true,
-              fillColor: Colors.grey[100],
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+          Form(
+            key: _formKey,
+            child: TextFormField(
+              controller: _controllerNome,
+              validator: (_controllerNome) {
+                if (_controllerNome!.isEmpty) return 'O campo é obrigatório';
+                if (_controllerNome.length < 5) return 'O campo é muito curto';
+                return null;
+              },
+              autofocus: true,
+              keyboardType: TextInputType.text,
+              style: TextStyle(fontSize: 20),
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                hintText: "Nome Completo",
+                filled: true,
+                fillColor: Colors.grey[100],
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              ),
             ),
           ),
           SizedBox(height: 20),
-          TextField(
+          TextFormField(
             controller: _controllercep,
             autofocus: true,
+            // validator: validadeCep,
+            onChanged: (_controllercep) {
+              if (_formKey.currentState!.validate()) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Cep incorreto'),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
+              }
+            },
             keyboardType: TextInputType.streetAddress,
             style: TextStyle(fontSize: 20),
             decoration: InputDecoration(
@@ -172,11 +201,18 @@ class _RegisterFormsState extends State<RegisterForms> {
                   ),
                 ),
                 onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    Scaffold.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Enviando dados para o servidor...'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  }
                   _validarCampos();
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Color(0xffFF1717),
-                  
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -187,7 +223,7 @@ class _RegisterFormsState extends State<RegisterForms> {
           SizedBox(height: 20),
           Center(
             child: Text(
-             "${_mensagemErro}",
+              "${_mensagemErro}",
               style: TextStyle(color: Colors.redAccent, fontSize: 25),
             ),
           )

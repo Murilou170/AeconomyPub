@@ -1,6 +1,7 @@
 import 'package:aeconomy/app/modules/register/components/register_forms.dart';
 import 'package:aeconomy/shared_components/appbars/OutsideAppBar.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -16,11 +17,6 @@ class _RegisterPageState extends State<RegisterPage> {
       body: SingleChildScrollView(
         child: Container(
           color: Colors.white,
-          // decoration: BoxDecoration(
-          //     gradient: LinearGradient(colors: [
-          //   Color.fromRGBO(255, 50, 0, 0.5),
-          //   Color.fromRGBO(255, 188, 117, 0.5)
-          // ])),
           height: 1000,
           child: Column(
             children: [
@@ -46,8 +42,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         children: [
                           Text(
                             'Sign Up',
-                            style: TextStyle(
-                              color: Colors.black,
+                            style: GoogleFonts.poppins(
                               fontSize: 40,
                             ),
                           ),
@@ -56,13 +51,13 @@ class _RegisterPageState extends State<RegisterPage> {
                             margin: EdgeInsets.symmetric(horizontal: 50),
                             child: Center(
                               child: Text(
-                                'Registre-se para ficar por dentro das melhores ofertas',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                ),
-                              ),
+                                  'Registre-se para ficar por dentro das melhores ofertas',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.poppins(
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
+                                  )),
                             ),
                           ),
                           SizedBox(height: 50),
